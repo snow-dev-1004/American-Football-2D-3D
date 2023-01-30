@@ -21,6 +21,15 @@ var pitchX = 660,
 var w1 = pitchX / 2,
   w2 = 446 / 2,
   hp = pitchY;
+
+var topLeft2 = 100,
+  topPosition2 = 183;
+var pitchX2 = 600,
+  pitchY2 = 229;
+var w12 = pitchX2 / 2,
+  w22 = 600 / 2,
+  hp2 = pitchY2;
+
 var x1 = 0,
   y1 = hp / 2,
   x2 = 0,
@@ -138,11 +147,13 @@ function kickBall() {
   }
 }
 function mapX(x11, y11) {
-  x_11 = ((w2 + ((w1 - w2) * y11) / hp) * x11) / w1;
+  if (viewMode == 3) x_11 = ((w2 + ((w1 - w2) * y11) / hp) * x11) / w1;
+  if (viewMode == 2) x_11 = x11;
   return x_11;
 }
 function mapY(x11, y11) {
-  y_11 = ((y11 * y11) / hp + 1.5 * y11) / 2.5;
+  if (viewMode == 3) y_11 = ((y11 * y11) / hp + 1.5 * y11) / 2.5;
+  if (viewMode == 2) y_11 = y11;
   return y_11;
 }
 function load() {
