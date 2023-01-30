@@ -1,3 +1,4 @@
+var viewMode = 3;
 var socket;
 var match;
 
@@ -713,4 +714,9 @@ function changeScreenSize() {
 function min(a, b) {
   if (a > b) return b;
   return a;
+}
+function toggleViewMode(){
+  if(viewMode == 3) viewMode = 2;
+  else if(viewMode == 2) viewMode = 3;
+  $('#viewMode').text(viewMode + 'D')
 }

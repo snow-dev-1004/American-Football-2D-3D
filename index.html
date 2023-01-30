@@ -727,17 +727,18 @@
             ></path>
           </defs>
           <g transform="translate(590, 15)">
-            <a id="link" href="../af-2d/index.html">
               <rect
                 x="0"
                 y="0"
                 width="50"
                 height="24"
-                style="fill: white; fill-opacity: 0.3"
+                style="fill: white; fill-opacity: 0.3;cursor:pointer"
                 rx="12"
                 ry="12"
+                onclick="toggleViewMode()"
               />
               <text
+                id="viewMode"
                 fill="#fff"
                 font-size="18"
                 font-family="InriaSans"
@@ -746,11 +747,12 @@
                 fill="#fff"
                 fill-opacity="1"
                 text-anchor="middle"
+                style="cursor:pointer"
                 alignment-baseline="middle"
+                onclick="toggleViewMode()"
               >
                 2D
               </text>
-            </a>
           </g>
         </g>
       </svg>
