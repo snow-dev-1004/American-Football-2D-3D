@@ -715,8 +715,12 @@ function min(a, b) {
   if (a > b) return b;
   return a;
 }
-function toggleViewMode(){
-  if(viewMode == 3) viewMode = 2;
-  else if(viewMode == 2) viewMode = 3;
-  $('#viewMode').text(viewMode + 'D')
+function toggleViewMode() {
+  $("#viewMode").text(viewMode + "D");
+  if (viewMode == 3) {
+    viewMode = 2;
+  } else if (viewMode == 2) {
+    viewMode = 3;
+  }
+  $("#pitchImage").attr("href", "./media/pitch" + viewMode + "d.png");
 }
