@@ -439,7 +439,7 @@ function setState() {
   }
   if (cst == "penalty_american_football") {
     setGameState("Penalty");
-    setYard(cs["decision"]["text"]);
+    setYard(cs["decision"]["text"] + "ed");
   }
   if (cst == "extra_point") {
     setGameState(cs["points"] + " Extra point");
