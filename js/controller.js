@@ -13,6 +13,7 @@ var played = 0;
 var currentPlayed = 0;
 var time = 0;
 var isRunning = false;
+var matchStartDate; 
 
 var topLeft = 177,
   topPosition = 216;
@@ -65,6 +66,21 @@ function countdown() {
       else kickBall();
       showState();
     }
+
+    if (matchStartDate) {
+      let sseconds = Math.floor((matchStartDate - currentDate.getTime()) / 1000);
+      var ssecond = sseconds % 60;
+      var sminutes = Math.floor(sseconds / 60);
+      var sminute = sminutes % 60;
+      var shours = Math.floor(sminutes / 60);
+      var shour = shours % 24;
+      var sdays = Math.floor(shours / 24);
+      setCenterFrame(
+        "Not Started",
+        sdays + "D " + shour + "H " + sminute + "M " + ssecond + "S"
+      );
+    }
+
     if (played != currentPlayed) {
       currentPlayed = played;
       time = played * 1000;
@@ -273,7 +289,8 @@ function setGameState() {
     $("#gameState").text("Possession");
   if (gameState[currentState]["name"] == "Timeout over")
     $("#gameState").text("Timeout");
-  if (match["status"]["name"] == "Ended") $("#gameState").text("Match End");
+  if (match["status"] && match["status"]["name"] == "Ended")
+    $("#gameState").text("Match End");
   if (
     gameState[currentState]["type"] == "pass" &&
     gameState[currentState]["outcome"] &&
@@ -611,7 +628,7 @@ function handleEventData(data) {
       const currentDate = new Date();
       upCommingTime = currentDate.getTime() / 1000 - match["updated_uts"];
       // var seconds = Math.floor(updated_uts / 1000)
-      var seconds = Math.floor(upCommingTime);
+      let seconds = Math.floor(upCommingTime);
       var minute = Math.floor(seconds / 60);
       var second = seconds % 60;
       // var date = new Date(match['_dt']['date'] + '4:52:48 PM UTC');
