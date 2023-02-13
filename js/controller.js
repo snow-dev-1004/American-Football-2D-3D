@@ -519,6 +519,9 @@ function stepInitialize() {
   y_1_1 = mapY(x1, y1);
   x_1_2 = mapX(x2, y2);
   y_1_2 = mapY(x2, y2);
+  setBallLine();
+}
+function setBallLine() {
   if (gameState[currentState]["team"] == "home") {
     $("#homeHelmet1").attr("fill", "#" + homePlayerColor);
     $("#awayHelmet1").attr("fill", "none");
