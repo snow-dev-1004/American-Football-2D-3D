@@ -404,6 +404,8 @@ function setState() {
     if (cs["outcome"] && cs["outcome"]["text"] == "incomplete")
       setGameState("Incomplete Rush");
     setYard(cs["drive"]["yardline"] - yardline + " yards");
+    if (cs["team"] == "away")
+      setYard(-cs["drive"]["yardline"] + yardline + " yards");
     if (cs["drive"]) yardline = cs["drive"]["yardline"];
   }
   if (cst == "fumble") {
@@ -414,6 +416,8 @@ function setState() {
     setGameState("Pass");
     if (cs["outcome"]) setGameState(cs["outcome"]["text"] + " Pass");
     setYard(cs["drive"]["yardline"] - yardline + " yards");
+    if (cs["team"] == "away")
+      setYard(-cs["drive"]["yardline"] + yardline + " yards");
     if (cs["drive"]) yardline = cs["drive"]["yardline"];
   }
   if (cst == "new_first_down") {
@@ -464,6 +468,8 @@ function setState() {
   if (cst == "sack") {
     setGameState("Sack");
     setYard(cs["drive"]["yardline"] - yardline + " yards");
+    if (cs["team"] == "away")
+      setYard(-cs["drive"]["yardline"] + yardline + " yards");
     if (cs["drive"]) yardline = cs["drive"]["yardline"];
   }
   if (cst == "timeout") {
