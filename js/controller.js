@@ -380,10 +380,10 @@ function setState() {
     setGameState("Kickoff Mode");
     setYard("Started");
   }
-  // if (cst == "kickoff_mode_ended") {
-  //   setGameState("Kickoff Mode");
-  //    setYard("Ended");
-  // }
+  if (cst == "kickoff_mode_ended") {
+    // setGameState("Kickoff Mode");
+    // setYard("Ended");
+  }
   if (cst == "play_start") {
     // setGameState("Play start");
     //  setYard(teamNames[cs["team"]]);
