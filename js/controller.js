@@ -399,6 +399,10 @@ function setState() {
   if (cst == "rush") {
     setGameState("Rush");
     if (cs["outcome"]) setGameState(cs["outcome"]["text"] + " Rush");
+    if (cs["outcome"] && cs["outcome"]["text"] == "complete")
+      setGameState("Rush");
+    if (cs["outcome"] && cs["outcome"]["text"] == "incomplete")
+      setGameState("Incomplete Rush");
     setYard(cs["drive"]["yardline"] - yardline + " yards");
     if (cs["drive"]) yardline = cs["drive"]["yardline"];
   }
@@ -708,28 +712,28 @@ function showState() {
     $("#period").text("Ended");
     setCenterFrame("Match End", homeScore + ":" + awayScore);
     $("#gameState").text("");
-     setYard("");
+    setYard("");
   }
   if (match && match["p"] == 31) {
     setTimer = false;
     setCenterFrame("Quarter Ended", homeScore + ":" + awayScore);
     $("#period").text("Break");
     $("#gameState").text("QUARTER ENDED");
-     setYard("End Of 1st Quarter");
+    setYard("End Of 1st Quarter");
   }
   if (match && match["p"] == 32) {
     setTimer = false;
     setCenterFrame("Half time", homeScore + ":" + awayScore);
     $("#period").text("Half time");
     $("#gameState").text("QUARTER ENDED");
-     setYard("End Of 2nd Quarter");
+    setYard("End Of 2nd Quarter");
   }
   if (match && match["p"] == 33) {
     setTimer = false;
     setCenterFrame("Quarter Ended", homeScore + ":" + awayScore);
     $("#period").text("Break");
     $("#gameState").text("QUARTER ENDED");
-     setYard("End Of 3rd Quarter");
+    setYard("End Of 3rd Quarter");
   }
 }
 var dob = 0;
@@ -892,7 +896,7 @@ function handleEventData(data) {
         setGameState("Match End");
       }
       if (match["status"]["name"] == "Ended") {
-         setYard("Winner: " + teamNames[match["result"]["winner"]]);
+        setYard("Winner: " + teamNames[match["result"]["winner"]]);
       }
     }
     if (match["status"]["name"] == "Break") {
