@@ -247,7 +247,7 @@ function capitalizeWords(arr) {
     return firstLetter + rest;
   });
 }
-function setGameState() {
+function setGameState1() {
   $("#gameState").text(gameState[currentState]["name"]);
   if (gameState[currentState]["points"] == 0) {
     $("#gameState").text("Extra point");
@@ -316,7 +316,7 @@ function setGameState() {
       $("#gameState").text("Incompleted Rush");
   }
 }
-function setYard() {
+function setYard1() {
   if (gameState[currentState]["drive"]) {
     $("#yard").text(gameState[currentState]["drive"]["yards"] + "yards");
     if (gameState[currentState]["points"] > 0)
@@ -363,125 +363,131 @@ function setYard() {
       $("#yard").text("Touchback");
   }
 }
+function setGameState(state) {
+  $("#gameState").text(state.toUpperCase());
+}
+function setYard(yard) {
+  $("#yard").text(capitalizeWords(yard.split(" ")).join(" "));
+}
 function setState() {
   let cs = gameState[currentState];
   let cst = cs["type"];
   if (cst == "drive_start") {
-    $("#gameState").text("Drive Start");
-    $("#yard").text(teamNames[cs["team"]]);
+    setGameState("Drive Start");
+    setYard(teamNames[cs["team"]]);
   }
   if (cst == "kickoff_mode_started") {
-    $("#gameState").text("Kickoff Mode");
-    $("#yard").text("Started");
+    setGameState("Kickoff Mode");
+    setYard("Started");
   }
   // if (cst == "kickoff_mode_ended") {
-  //   $("#gameState").text("Kickoff Mode");
-  //   $("#yard").text("Ended");
+  //   setGameState("Kickoff Mode");
+  //    setYard("Ended");
   // }
   if (cst == "play_start") {
-    // $("#gameState").text("Play start");
-    // $("#yard").text(teamNames[cs["team"]]);
+    // setGameState("Play start");
+    //  setYard(teamNames[cs["team"]]);
   }
   if (cst == "play_over") {
-    // $("#gameState").text("Play over");
-    // $("#yard").text(cs["drive"]["yardline"] - yardline + " yards");
+    // setGameState("Play over");
+    //  setYard(cs["drive"]["yardline"] - yardline + " yards");
   }
   if (cst == "kickoff_american_football") {
-    $("#gameState").text("Kick Off");
-    $("#yard").text(cs["outcome"]["text"]);
+    setGameState("Kick Off");
+    setYard(cs["outcome"]["text"]);
   }
   if (cst == "rush") {
-    $("#gameState").text("Rush");
-    if (cs["outcome"]) $("#gameState").text(cs["outcome"]["text"] + " Rush");
-    $("#yard").text(cs["drive"]["yardline"] - yardline + " yards");
+    setGameState("Rush");
+    if (cs["outcome"]) setGameState(cs["outcome"]["text"] + " Rush");
+    setYard(cs["drive"]["yardline"] - yardline + " yards");
     if (cs["drive"]) yardline = cs["drive"]["yardline"];
   }
   if (cst == "fumble") {
-    $("#gameState").text("Play over");
-    $("#yard").text(cs["outcome"]["text"]);
+    setGameState("Play over");
+    setYard(cs["outcome"]["text"]);
   }
   if (cst == "pass") {
-    $("#gameState").text("Pass");
-    if (cs["outcome"]) $("#gameState").text(cs["outcome"]["text"] + " Pass");
-    $("#yard").text(cs["drive"]["yardline"] - yardline + " yards");
+    setGameState("Pass");
+    if (cs["outcome"]) setGameState(cs["outcome"]["text"] + " Pass");
+    setYard(cs["drive"]["yardline"] - yardline + " yards");
     if (cs["drive"]) yardline = cs["drive"]["yardline"];
   }
   if (cst == "new_first_down") {
-    // $("#gameState").text("New First Down");
-    // $("#yard").text("");
+    // setGameState("New First Down");
+    //  setYard("");
   }
   if (cst == "drive_over") {
-    $("#gameState").text("Drive Over");
-    $("#yard").text("");
+    setGameState("Drive Over");
+    setYard("");
   }
   if (cst == "videoreview") {
-    $("#gameState").text("Video review");
-    $("#yard").text(teamNames[cs["team"]]);
+    setGameState("Video review");
+    setYard(teamNames[cs["team"]]);
   }
   if (cst == "touchdown") {
-    $("#gameState").text("Touchdown");
-    if (cs["passed_by"]) $("#yard").text(cs["passed_by"]["name"]);
-    if (cs["received_by"]) $("#yard").text(cs["received_by"]["name"]);
+    setGameState("Touchdown");
+    if (cs["passed_by"]) setYard(cs["passed_by"]["name"]);
+    if (cs["received_by"]) setYard(cs["received_by"]["name"]);
   }
   if (cst == "field_goal_result") {
-    $("#gameState").text("Field goal");
-    $("#yard").text(cs["outcome"]["text"]);
+    setGameState("Field goal");
+    setYard(cs["outcome"]["text"]);
   }
   if (cst == "penalty_american_football") {
-    $("#gameState").text("Penalty");
-    $("#yard").text(cs["decision"]["text"]);
+    setGameState("Penalty");
+    setYard(cs["decision"]["text"]);
   }
   if (cst == "extra_point") {
-    $("#gameState").text(cs["points"] + " Extra point");
-    $("#yard").text(cs["result"]["text"]);
+    setGameState(cs["points"] + " Extra point");
+    setYard(cs["result"]["text"]);
   }
   if (cst == "tv_timeout_start") {
-    $("#gameState").text("TV Timeout");
-    $("#yard").text("Start");
+    setGameState("TV Timeout");
+    setYard("Start");
   }
   if (cst == "tv_timeout_stop") {
-    $("#gameState").text("TV Timeout");
-    $("#yard").text("Over");
+    setGameState("TV Timeout");
+    setYard("Over");
   }
   if (cst == "punt_result") {
-    $("#gameState").text("Punt");
-    $("#yard").text(cs["outcome"]["text"]);
+    setGameState("Punt");
+    setYard(cs["outcome"]["text"]);
   }
   if (cst == "possession") {
-    $("#gameState").text("Possession");
-    $("#yard").text(teamNames[cs["team"]]);
+    setGameState("Possession");
+    setYard(teamNames[cs["team"]]);
   }
   if (cst == "sack") {
-    $("#gameState").text("Sack");
-    $("#yard").text(cs["drive"]["yardline"] - yardline + " yards");
+    setGameState("Sack");
+    setYard(cs["drive"]["yardline"] - yardline + " yards");
     if (cs["drive"]) yardline = cs["drive"]["yardline"];
   }
   if (cst == "timeout") {
-    $("#gameState").text("Timeout");
-    if (cs["name"] == "Timeout") $("#yard").text("Start");
-    if (cs["name"] == "Timeout over") $("#yard").text("Over");
+    setGameState("Timeout");
+    if (cs["name"] == "Timeout") setYard("Start");
+    if (cs["name"] == "Timeout over") setYard("Over");
   }
   if (cst == "turnover_football") {
-    $("#gameState").text("Turnover");
-    if (cs["name"] == "Turnover football") $("#yard").text("Football");
-    if (cs["name"] == "Interception") $("#yard").text("Interception");
+    setGameState("Turnover");
+    if (cs["name"] == "Turnover football") setYard("Football");
+    if (cs["name"] == "Interception") setYard("Interception");
   }
   if (cst == "periodscore") {
-    $("#gameState").text(cs["name"]);
-    $("#yard").text(cs["matchStatus"]["name"]);
+    setGameState(cs["name"]);
+    setYard(cs["matchStatus"]["name"]);
   }
   if (cst == "periodstart") {
-    $("#gameState").text(cs["name"]);
-    $("#yard").text("");
+    setGameState(cs["name"]);
+    setYard("");
   }
   if (cst == "two_point_conversion") {
-    $("#gameState").text(cs["name"]);
-    if (cs["result"]) $("#yard").text(cs["result"]["text"]);
-    else $("#yard").text("");
+    setGameState(cs["name"]);
+    if (cs["result"]) setYard(cs["result"]["text"]);
+    else setYard("");
   }
   if (cst == "challenge") {
-    $("#gameState").text("Challenge");
-    $("#yard").text("");
+    setGameState("Challenge");
+    setYard("");
   }
 }
 function stepInitialize() {
@@ -510,6 +516,7 @@ function stepInitialize() {
     $("#awayPossession").attr("fill-opacity", 0);
     // $('#homePossession').attr('points', '177, 216 ' + 117 + 506 / 100 * gameState[currentState]["drive"]["yards"] + ', 216 730, 412 70, 412')
     if (gameState[currentState]["drive"]) {
+      $("#homeLine").attr("y1", topPosition);
       $("#homeLine").attr(
         "x1",
         177 + (446 / 100) * gameState[currentState]["drive"]["yardline"]
@@ -519,6 +526,7 @@ function stepInitialize() {
         70 + (660 / 100) * gameState[currentState]["drive"]["yardline"]
       );
       if (viewMode == 2) {
+        $("#homeLine").attr("y1", topPosition2);
         $("#homeLine").attr(
           "x1",
           topLeft2 +
@@ -550,7 +558,6 @@ function stepInitialize() {
         "x2",
         70 + (660 / 100) * gameState[currentState]["drive"]["yardline"]
       );
-
       if (viewMode == 2) {
         $("#awayLine").attr("y1", topPosition2);
         $("#awayLine").attr(
@@ -579,6 +586,7 @@ function stepInitialize() {
     $("#awayPossession").attr("fill-opacity", 0);
     // $('#homePossession').attr('points', '177, 216 ' + 117 + 506 / 100 * gameState[currentState]["drive"]["yards"] + ', 216 730, 412 70, 412')
     if (gameState[currentState]["drive"]) {
+      $("#homeLine").attr("y1", topPosition);
       $("#homeLine").attr(
         "x1",
         177 + (446 / 100) * gameState[currentState]["drive"]["yardline"]
@@ -587,6 +595,19 @@ function stepInitialize() {
         "x2",
         70 + (660 / 100) * gameState[currentState]["drive"]["yardline"]
       );
+      if (viewMode == 2) {
+        $("#homeLine").attr("y1", topPosition2);
+        $("#homeLine").attr(
+          "x1",
+          topLeft2 +
+            (pitchX2 / 100) * gameState[currentState]["drive"]["yardline"]
+        );
+        $("#homeLine").attr(
+          "x2",
+          topLeft2 +
+            (pitchX2 / 100) * gameState[currentState]["drive"]["yardline"]
+        );
+      }
       $("#awayLine").attr("x1", -100);
       $("#awayLine").attr("x2", -100);
       $("#homeLine").attr("stroke", "#" + homePlayerColor);
@@ -601,6 +622,7 @@ function stepInitialize() {
     $("#homePossession").attr("fill-opacity", 0);
     // $('#awayPossession').attr('fill-opacity', 0.7)
     if (gameState[currentState]["drive"]) {
+      $("#awayLine").attr("y1", topPosition);
       $("#awayLine").attr(
         "x1",
         177 + (446 / 100) * gameState[currentState]["drive"]["yardline"]
@@ -609,6 +631,19 @@ function stepInitialize() {
         "x2",
         70 + (660 / 100) * gameState[currentState]["drive"]["yardline"]
       );
+      if (viewMode == 2) {
+        $("#awayLine").attr("y1", topPosition2);
+        $("#awayLine").attr(
+          "x1",
+          topLeft2 +
+            (pitchX2 / 100) * gameState[currentState]["drive"]["yardline"]
+        );
+        $("#awayLine").attr(
+          "x2",
+          topLeft2 +
+            (pitchX2 / 100) * gameState[currentState]["drive"]["yardline"]
+        );
+      }
       $("#homeLine").attr("x1", -100);
       $("#homeLine").attr("x2", -100);
       $("#awayLine").attr("stroke", "#" + awayPlayerColor);
@@ -673,28 +708,28 @@ function showState() {
     $("#period").text("Ended");
     setCenterFrame("Match End", homeScore + ":" + awayScore);
     $("#gameState").text("");
-    $("#yard").text("");
+     setYard("");
   }
   if (match && match["p"] == 31) {
     setTimer = false;
     setCenterFrame("Quarter Ended", homeScore + ":" + awayScore);
     $("#period").text("Break");
     $("#gameState").text("QUARTER ENDED");
-    $("#yard").text("End Of 1st Quarter");
+     setYard("End Of 1st Quarter");
   }
   if (match && match["p"] == 32) {
     setTimer = false;
     setCenterFrame("Half time", homeScore + ":" + awayScore);
     $("#period").text("Half time");
     $("#gameState").text("QUARTER ENDED");
-    $("#yard").text("End Of 2nd Quarter");
+     setYard("End Of 2nd Quarter");
   }
   if (match && match["p"] == 33) {
     setTimer = false;
     setCenterFrame("Quarter Ended", homeScore + ":" + awayScore);
     $("#period").text("Break");
     $("#gameState").text("QUARTER ENDED");
-    $("#yard").text("End Of 3rd Quarter");
+     setYard("End Of 3rd Quarter");
   }
 }
 var dob = 0;
@@ -854,10 +889,10 @@ function handleEventData(data) {
       setCenterFrame("Match End", homeScore + " : " + awayScore);
       isRunning = false;
       if (match["status"]["name"] == "Ended") {
-        $("#gameState").text("Match End");
+        setGameState("Match End");
       }
       if (match["status"]["name"] == "Ended") {
-        $("#yard").text("Winner: " + teamNames[match["result"]["winner"]]);
+         setYard("Winner: " + teamNames[match["result"]["winner"]]);
       }
     }
     if (match["status"]["name"] == "Break") {
