@@ -20,7 +20,7 @@
           <g id="pitch">
             <image
               id="pitchImage"
-              href="./media/pitch2d.png"
+              href="./media/pitch3d.png"
               x="0"
               y="0"
               width="800"
@@ -29,15 +29,25 @@
             <!-- <polygon points = '100, 183 700, 183 700, 412 100, 412' fill-opacity="0.7"/> -->
           </g>
           <g id="possessionGroup">
-            <polygon id="homePossession" points = '177, 216 623, 216 730, 412 70, 412' fill-opacity="0" fill="#000"/>
-            <polygon id="awayPossession" points = '177, 216 623, 216 730, 412 70, 412' fill-opacity="0" fill="#000"/>
+            <polygon
+              id="homePossession"
+              points="177, 216 623, 216 730, 412 70, 412"
+              fill-opacity="0"
+              fill="#000"
+            />
+            <polygon
+              id="awayPossession"
+              points="177, 216 623, 216 730, 412 70, 412"
+              fill-opacity="0"
+              fill="#000"
+            />
             <line
               id="homeLine"
               x1="0"
               y1="216"
               x2="0"
               y2="412"
-              stroke-width = '3'
+              stroke-width="3"
               stroke-opacity="0.8"
             />
             <line
@@ -46,7 +56,7 @@
               y1="216"
               x2="0"
               y2="412"
-              stroke-width = '3'
+              stroke-width="3"
               stroke-opacity="0.8"
             />
           </g>
@@ -61,22 +71,49 @@
               fill="green"
               fill-opacity="0.5"
             />
-            <image id="ball" href="./media/ball.png" width="20" x="10000" y="10000"/>
+            <image
+              id="ball"
+              href="./media/ball.png"
+              width="20"
+              x="10000"
+              y="10000"
+            />
           </g>
           <g id="Header">
-            <path d="M 403 15 L 503 15
+            <path
+              d="M 403 15 L 503 15
                 A 12 12, 0, 0, 1, 503 39
-                L 403 39 Z" fill="white" fill-opacity='0.3' />
-            <path d="M 397 15 L 297 15
+                L 403 39 Z"
+              fill="white"
+              fill-opacity="0.3"
+            />
+            <path
+              d="M 397 15 L 297 15
                 A 12 12, 0, 0, 0, 297 39
-                L 397 39 Z" fill="white" fill-opacity='0.3' />
-            <text id="time" fill="#fff" font-size="18" font-family="InriaSans" x="453" y="33" fill-opacity="1"
-              text-anchor="middle">
-              
-            </text>
-            <text id="period" fill="#fff" font-size="18" font-family="InriaSans" x="348" y="33" fill-opacity="1"
-              text-anchor="middle">
-            </text>
+                L 397 39 Z"
+              fill="white"
+              fill-opacity="0.3"
+            />
+            <text
+              id="time"
+              fill="#fff"
+              font-size="18"
+              font-family="InriaSans"
+              x="453"
+              y="33"
+              fill-opacity="1"
+              text-anchor="middle"
+            ></text>
+            <text
+              id="period"
+              fill="#fff"
+              font-size="18"
+              font-family="InriaSans"
+              x="348"
+              y="33"
+              fill-opacity="1"
+              text-anchor="middle"
+            ></text>
             <text
               id="score"
               fill="#fff"
@@ -430,8 +467,8 @@
                 ry="5"
                 fill="#0f0"
                 fill-opacity="0.5"
-              /> 
-              <g transform="translate(150, 85)">
+              />
+              <g transform="translate(250, 85)">
                 <g transform="scale(0.1)">
                   <path
                     id="homeHelmet1"
@@ -464,7 +501,7 @@
                   />
                 </g>
               </g>
-              <g transform="translate(200, 85)">
+              <g transform="translate(300, 85)">
                 <g transform="scale(0.1, 0.1) scale(-1, 1)">
                   <path
                     id="awayHelmet1"
@@ -504,9 +541,7 @@
                 y="110"
                 text-anchor="start"
                 fill="#fff"
-              >
-                
-              </text>
+              ></text>
               <text
                 id="yard"
                 font-size="18"
@@ -514,86 +549,86 @@
                 y="129"
                 text-anchor="start"
                 fill="#fff"
-              >
-                
-              </text>
-              <text
-                font-size="18"
-                x="350"
-                y="105"
-                text-anchor="end"
-                fill="#fff"
-              >
-                PLAYS
-              </text>
-              <text
-                font-size="18"
-                x="350"
-                y="129"
-                text-anchor="end"
-                fill="#fff"
-              >
-                YARDS
-              </text>
-              <text
-                id="gameStatePlays"
-                font-size="18"
-                x="370"
-                y="105"
-                text-anchor="end"
-                fill="#fff"
-              >
-                -
-              </text>
-              <text
-                id="gameStateYards"
-                font-size="18"
-                x="370"
-                y="129"
-                text-anchor="end"
-                fill="#fff"
-              >
-                -
-              </text>
+              ></text>
+              <g id="removed_state" style="display: none">
+                <text
+                  font-size="18"
+                  x="350"
+                  y="105"
+                  text-anchor="end"
+                  fill="#fff"
+                >
+                  PLAYS
+                </text>
+                <text
+                  font-size="18"
+                  x="350"
+                  y="129"
+                  text-anchor="end"
+                  fill="#fff"
+                >
+                  YARDS
+                </text>
+                <text
+                  id="gameStatePlays"
+                  font-size="18"
+                  x="370"
+                  y="105"
+                  text-anchor="end"
+                  fill="#fff"
+                >
+                  -
+                </text>
+                <text
+                  id="gameStateYards"
+                  font-size="18"
+                  x="370"
+                  y="129"
+                  text-anchor="end"
+                  fill="#fff"
+                >
+                  -
+                </text>
 
-              <text
-                font-size="18"
-                x="250"
-                y="105"
-                text-anchor="end"
-                fill="#fff"
-              >
-                PASS
-              </text>
-              <text
-                font-size="18"
-                x="250"
-                y="129"
-                text-anchor="end"
-                fill="#fff"
-              >
-                RUSH
-              </text>
-              <text
-                id="gameStatePass"
-                font-size="18"
-                x="270"
-                y="105"
-                text-anchor="end"
-                fill="#fff"
-              >
-                -
-              </text>
-              <text
-                id="gameStateRush"
-                font-size="18"
-                x="270"
-                y="129"
-                text-anchor="end"
-                fill="#fff"
-              >
-                -
-              </text>
+                <text
+                  font-size="18"
+                  x="250"
+                  y="105"
+                  text-anchor="end"
+                  fill="#fff"
+                >
+                  PASS
+                </text>
+                <text
+                  font-size="18"
+                  x="250"
+                  y="129"
+                  text-anchor="end"
+                  fill="#fff"
+                >
+                  RUSH
+                </text>
+                <text
+                  id="gameStatePass"
+                  font-size="18"
+                  x="270"
+                  y="105"
+                  text-anchor="end"
+                  fill="#fff"
+                >
+                  -
+                </text>
+                <text
+                  id="gameStateRush"
+                  font-size="18"
+                  x="270"
+                  y="129"
+                  text-anchor="end"
+                  fill="#fff"
+                >
+                  -
+                </text>
+              </g>
             </g>
           </g>
           <g id="Alert">
@@ -728,32 +763,32 @@
             ></path>
           </defs>
           <g transform="translate(590, 15)">
-              <rect
-                x="0"
-                y="0"
-                width="50"
-                height="24"
-                style="fill: white; fill-opacity: 0.3;cursor:pointer"
-                rx="12"
-                ry="12"
-                onclick="toggleViewMode()"
-              />
-              <text
-                id="viewMode"
-                fill="#fff"
-                font-size="18"
-                font-family="InriaSans"
-                x="25"
-                y="12"
-                fill="#fff"
-                fill-opacity="1"
-                text-anchor="middle"
-                style="cursor:pointer"
-                alignment-baseline="middle"
-                onclick="toggleViewMode()"
-              >
-                2D
-              </text>
+            <rect
+              x="0"
+              y="0"
+              width="50"
+              height="24"
+              style="fill: white; fill-opacity: 0.3; cursor: pointer"
+              rx="12"
+              ry="12"
+              onclick="toggleViewMode()"
+            />
+            <text
+              id="viewMode"
+              fill="#fff"
+              font-size="18"
+              font-family="InriaSans"
+              x="25"
+              y="12"
+              fill="#fff"
+              fill-opacity="1"
+              text-anchor="middle"
+              style="cursor: pointer"
+              alignment-baseline="middle"
+              onclick="toggleViewMode()"
+            >
+              2D
+            </text>
           </g>
         </g>
       </svg>
