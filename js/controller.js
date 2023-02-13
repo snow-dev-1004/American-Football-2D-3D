@@ -14,6 +14,7 @@ var currentPlayed = 0;
 var time = 0;
 var isRunning = false;
 var matchStartDate;
+var isTimeout;
 
 var topLeft = 177,
   topPosition = 216;
@@ -175,6 +176,7 @@ function mapY(x11, y11) {
   return y_11;
 }
 function load() {
+  isTimeout = false;
   homeSummary = "0";
   awaySummary = "0";
   ballPlayMode = 0;
@@ -503,6 +505,8 @@ function setState() {
 function stepInitialize() {
   t = 0;
   if (!gameState.length) return;
+  if (gameState[currentState]["type"] == "tv_timeout_start") isTimeout = true;
+  if (gameState[currentState]["type"] == "tv_timeout_stop") isTimeout = false;
   x1 = x2;
   y1 = y2;
   if (currentState > gameState.length - 2) return;
